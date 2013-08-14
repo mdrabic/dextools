@@ -37,6 +37,9 @@ info ()
 if [ -z "$1" ]; then info; exit; fi
 if [ -z "$2" ]; then info; exit; fi
 
+#Check ADB is in $PATH
+type -P "adb" || echo "[ERROR] ADB is not in PATH"; exit 1;
+
 echo "[GENODEX] Get BOOTCLASSPATH"
 bcp=$(adb shell echo \$BOOTCLASSPATH)
 
